@@ -26,7 +26,12 @@ export const server = () => Bun.serve({
         console.info(`downloading new file.`)
         const result = await $`yt-dlp -o '/tmp/ytb/%(id)s.%(ext)s' -f '${format}' '${target}'`.text();
 
-        return new Response(result);
+        return new Response(result, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+          }
+        });
       } catch (error) {
         console.error(`${error.stdout.toString()}\n\n${error.stderr.toString()}`)
         return new Response(`ERROR! logs: \n \n ${error.stdout.toString()} \n \n ${error.stderr.toString()}`, { status: 500 })
@@ -39,7 +44,13 @@ export const server = () => Bun.serve({
       if (file.length > 1) {
         console.info(`serving file: ${file}`)
         const bunfile = await Bun.file(`/tmp/ytb/${file}`).bytes();
-        return new Response(bunfile, { headers: { "Content-Type": "video/mp4" } })
+        return new Response(bunfile, {
+          headers: {
+            "Content-Type": "video/mp4",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+          }
+        })
       } else {
         console.info('/api/download was called, but no file was found in /tmp/ytb')
         return new Response("no file found", { status: 500 })
