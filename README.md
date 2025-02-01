@@ -11,3 +11,21 @@
 `ui/frontend.jsx` - renders `App.jsx`
 
 `ui/App.jsx` - the actual page
+
+## Requirements
+
+you need these binaries on your $PATH:
+
+- `bun`
+- `yt-dlp`
+
+## Usage
+
+```
+git clone https://github.com/rconjoe/yt-booster
+cd yt-booster
+bun install
+bun run index.ts
+```
+
+app will be served on `localhost:3400`.
