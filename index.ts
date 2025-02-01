@@ -1,3 +1,3 @@
 import { server } from "./src/dlp";
 
-server()
+await server()
