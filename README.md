@@ -16,8 +16,8 @@
 
 you need these binaries on your $PATH:
 
-- `bun`
-- `yt-dlp`
+- `bun` version 1.2.1 or greater https://bun.sh
+- `yt-dlp` version 2025.01.26 or greater https://github.com/yt-dlp/yt-dlp
 
 ## Usage
 
